@@ -4,7 +4,7 @@ A script to post process 3D printing GCODE files to enable multiple extruders to
 
 ##Background
 
-Currently, standard 3D printing Gcode files contain tool change commands (T1,T2,T3 etc) to activate another extruder. This switches off the current extruder and all the Extruder Gcode (E) commands that follow in the file will now apply to the newly activated extruder. It's a one or the other scenario.
+Currently, standard 3D printing Gcode files contain tool change commands (T1,T2,T3 etc) to activate another extruder. This switches off the current extruder and all the extruder Gcode (E) commands that follow in the file will now apply to the newly activated extruder. It's a one or the other scenario.
 
 Proposals in the open source 3D printing community for multi-material models require on-the-fly mixing capabilities where multiple feedstocks are introduced into a combined single hot-end. The rate at which the feedstocks are introduced will determine the characteristics of the material being extruded. Examples are one flexible and one rigid input feedstock to output a range of flexible materials depending on the mix ratio. Discrete areas of a model can be printed with different percentages of flexibilities. Another application is producing a vast range of coloured extrusion by mixing CMYK input feedstocks.
 
