@@ -14,7 +14,7 @@ This script sits somewhere between the slicing software and the firmware. Once t
 
 ##What This Script Does.
 
-It takes a standard Gcode file that is currently produced for multiple extrusion (dual etc.) and search for the extruder change "T" codes. Once found, replace it's respective "E" values with a recalculated "A" and "B" value based upon the mix percentages required. NOTE: "A" and "B" are just labels for the purpose of this write-up, the actual labels in the Gcode could be anything defined by a proposed change to the standards.
+It takes a standard Gcode file that is currently produced for multiple extrusion (dual etc.) and searches for the extruder change "T" codes. Once found, it replace the respective "E" values with a recalculated "A" and "B" value based upon the mix percentages required. NOTE: "A" and "B" are just labels for the purpose of this write-up, the actual labels in the Gcode could be anything defined by a proposed change to the standards.
 
 ##Workflow
 
