@@ -1,0 +1,1 @@
+.\nawk\nawk.exe -f .\nawk\nawkfile-triple-head.nawk .\input.gcode > .\output.gcode

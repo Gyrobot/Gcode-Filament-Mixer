@@ -21,9 +21,9 @@ It takes a standard Gcode file that is currently produced for multiple extrusion
 1. Split the stl model up into various parts, each reflecting a specific mix ratio of feedstock.
 1. Run current slicing software for multi-extrusion. I use Slic3r which outputs specific extruder change Gcodes "T1" "T2" etc for each area of the model (see video).
 1. Run the "Gcode Filament Mixer" that will search for the extruder change "T" codes. Once found, replace the respective "E" values with a recalculated "A" and "B" value based upon the mix percentages required.
-1. Run Gcode through a modified firmware that can use A and B values (or similar Codes) to drive independent extruders. I believe Sailfish can use A and B values `G1 X100 Y100 A10 B20` and Aprinter firmware uses E and U `G1 X100 Y100 E10 U20`
+1. Run Gcode through a modified firmware that can use A and B values (or similar Codes) to drive independent extruders. I believe Sailfish can use A and B values `G1 X100 Y100 A10 B20` and Aprinter firmware uses E, U and V `G1 X100 Y100 E10 U20 V5`
 
-It is easy for me to change the script to mix more than two extruders (for full range colour mixing) and output different extruder codes. J.Corbett proposed A,B,C,D,J and K etc for the Gcodes in his paper on [Colour Mixing (Page 29)](http://reprap.org/mediawiki/images/0/05/RepRapColourMixingReport-jmc.pdf). However A,B and C are already used for X,Y,Z rotational axes resp.
+It is easy for me to change the script to mix more than three extruders (dual and triple included) and output different extruder codes. J.Corbett proposed A,B,C,D,J and K etc for the Gcodes in his paper on [Colour Mixing (Page 29)](http://reprap.org/mediawiki/images/0/05/RepRapColourMixingReport-jmc.pdf). However A,B and C are already used for X,Y,Z rotational axes resp.
 
 I have currently set 10 mix ratios, more can easily be added. Please remember this was to create different flexibilities where there are only two input filaments (flexible and non flexible)
 
@@ -33,14 +33,14 @@ I have created a video (silent) that shows you the Slicing and Gcode mixing proc
 
 [Gcode Filament Mixer - YouTube](http://youtu.be/sCfRjaHYPZ8)
 
-In the nawk folder, you can edit the `nawkfile.nawk` in a text editor to edit mixing values or to add extra toolchanges.
+In the nawk folder, you can edit the `nawkfile-dual-head.nawk` or `nawkfile-triple-head.nawk` in a text editor to edit mixing values or to add extra toolchanges.
 
 **Windows**
 
 I have included the unix command `nawk` in the nawk folder, downloaded from [http://gnuwin32.sourceforge.net/packages/nawk.htm](http://gnuwin32.sourceforge.net/packages/nawk.htm)
 
 1. Place gcode file to convert in this root folder and name it : `input.gcode`
-1. Run Execute.bat and it should convert gcode and create a `output.gcode` file
+1. Run `Execute Dual Head Mixing.bat` or `Execute Triple Head Mixing.bat` and it should convert gcode and create a `output.gcode` file with extrusions codes E,U (for Dual) and V (for triple)
 
 
 **Linux**
@@ -48,7 +48,9 @@ I have included the unix command `nawk` in the nawk folder, downloaded from [htt
 1. Place gcode file to convert in this root folder and name it : `input.gcode`
 1. nawk is already a linux command so you can simply just execute from this root folder :
 
-	`nawk -f nawk/nawkfile.nawk input.gcode > output.gcode`
+	`nawk -f nawkfile-dual-head.nawk input.gcode > output.gcode`
+or
+	`nawk -f nawkfile-triple-head.nawk input.gcode > output.gcode`
 
 ##Final Note
 

@@ -1,0 +1,1 @@
+.\nawk\nawk.exe -f .\nawk\nawkfile-dual-head.nawk .\input.gcode > .\output.gcode
