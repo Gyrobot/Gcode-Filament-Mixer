@@ -20,7 +20,7 @@ BEGIN {FS=" E" ; print ("; gcode modified for material mixing by 'Gcode Filament
 	{
 
 #
-# Edit the "E" and "U" and "V" in quotes to output gcode with other commands, e.g. "A", "B" or "C" for Sailfish firmware
+# Edit the "E" and "U" and "V" in quotes to output gcode with other commands, e.g. "A", "B" or "C" for Sailfish,"A", ":" and ":" for RepRap Pro firmware
 #
 		print ($1,"E"A*$2,"U"B*$2,"V"C*$2)
 	}
