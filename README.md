@@ -1,8 +1,8 @@
-##GCODE FILAMENT MIXER
+## GCODE FILAMENT MIXER
 
 A script to post process 3D printing GCODE files to enable multiple extruders to be used simultaneously for multi-material mixing.
 
-##Background
+## Background
 
 Currently, standard 3D printing Gcode files contain tool change commands (T1,T2,T3 etc) to activate another extruder. This switches off the current extruder and all the extruder Gcode (E) commands that follow in the file will now apply to the newly activated extruder. It's a one or the other scenario.
 
@@ -12,11 +12,11 @@ To enable a complete solution will require collaboration between many discipline
 
 This script sits somewhere between the slicing software and the firmware. Once the slicing software developers make a successful plug-in that outputs Gcode in a format conducive for filament mixing, I guess the script will then be redundant.
 
-##What This Script Does.
+## What This Script Does.
 
 It takes a standard Gcode file that is currently produced for multiple extrusion (dual etc.) and searches for the extruder change "T" codes. Once found, it replace the respective "E" values with a recalculated "A" and "B" value based upon the mix percentages required. NOTE: "A" and "B" are just labels for the purpose of this write-up, the actual labels in the Gcode could be anything defined by a proposed change to the standards.
 
-##Workflow
+## Workflow
 
 1. Split the stl model up into various parts, each reflecting a specific mix ratio of feedstock.
 1. Run current slicing software for multi-extrusion. I use Slic3r which outputs specific extruder change Gcodes "T1" "T2" etc for each area of the model (see video).
@@ -27,7 +27,7 @@ It is easy for me to change the script to mix more than three extruders (dual an
 
 I have currently set 10 mix ratios, more can easily be added. Please remember this was to create different flexibilities where there are only two input filaments (flexible and non flexible)
 
-##Instructions
+## Instructions
 
 I have created a video (silent) that shows you the Slicing and Gcode mixing process :
 
@@ -52,7 +52,7 @@ I have included the unix command `nawk` in the nawk folder, downloaded from [htt
 or
 	`nawk -f nawkfile-triple-head.nawk input.gcode > output.gcode`
 
-##Final Note
+## Final Note
 
 Long term, I expect slicing software to be able to output multiple extruder Gcode values on the same line, and firmware / hardware capable of driving multiple extruder's simultaneously independent!!!
 
